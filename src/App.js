@@ -5,6 +5,7 @@ import "./App.css";
 
 import Landing from "./components/Landing";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 const App = () => {
 	return (
@@ -14,6 +15,7 @@ const App = () => {
 					<Switch>
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/login" component={Login} />
+						<Route exact path="/register" component={Register} />
 					</Switch>
 				</Container>
 			</Fragment>
