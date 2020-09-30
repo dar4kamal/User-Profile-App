@@ -6,6 +6,7 @@ import "./App.css";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
 	return (
@@ -16,6 +17,7 @@ const App = () => {
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
+						<Route exact path="/dashboard" component={Dashboard} />
 					</Switch>
 				</Container>
 			</Fragment>
