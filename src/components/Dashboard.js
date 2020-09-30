@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import axios from "axios";
 import ProfileItem from "./ProfileItem";
+import EditPassword from "./editForms/EditPassword";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
 const Dashboard = () => {
+	const [modalShow, setModalShow] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const [userData, setUserData] = useState({});
 
@@ -75,7 +77,7 @@ const Dashboard = () => {
 						className="btn btn-primary float-right m-1"
 						style={{ width: "100%" }}
 						onClick={() => {
-							alert("change password");
+							setModalShow(true);
 						}}
 					>
 						Change Password
@@ -90,6 +92,7 @@ const Dashboard = () => {
 						Remove Account
 					</button>
 				</div>
+				<EditPassword show={modalShow} onHide={() => setModalShow(false)} />
 			</div>
 		</Fragment>
 	);
