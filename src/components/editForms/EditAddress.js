@@ -10,32 +10,11 @@ const EditAddress = (props) => {
 		country: "",
 		city: "",
 	});
-	// const [countries, setCountries] = useState([]);
-	// const [cities, setCities] = useState([]);
 
 	const { country, city } = formData;
-	// const getAddress = async (type) => {
-	// 	try {
-	// 		const { data } = await axios.get(`${ApiBaseUri}/api/users/${type}`);
-
-	// 		if (data) {
-	// 			if (type === "country") setCountries(data.countries);
-	// 			if (type === "city") setCities(data.cities);
-	// 		}
-	// 	} catch (err) {
-	// 		console.log(err.response.data.errors);
-	// 	}
-	// };
 	const onChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
-
-	// useEffect(() => {
-	// 	getAddress("country");
-	// }, []);
-	// useEffect(() => {
-	// 	getAddress("city");
-	// }, []);
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -85,37 +64,9 @@ const EditAddress = (props) => {
 							onChange={(e) => onChange(e)}
 							required
 						/>
-						{/* <select
-							value={country}
-							onChange={(e) => onChange(e)}
-							required
-							name="country"
-						>
-							{countries.map((c) => {
-								return (
-									<option key={c} value={c}>
-										{c}
-									</option>
-								);
-							})}
-						</select> */}
 					</div>
 					<div className="form-group">
 						<label> City </label>
-						{/* <select
-							value={city}
-							onChange={(e) => onChange(e)}
-							required
-							name="city"
-						>
-							{cities.map((c) => {
-								return (
-									<option key={c} value={c}>
-										{c}
-									</option>
-								);
-							})}
-						</select> */}
 						<input
 							type="text"
 							placeholder="Enter your City"
