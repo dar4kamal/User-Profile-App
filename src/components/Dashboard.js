@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import axios from "axios";
+import ProfileItem from "./ProfileItem";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
@@ -41,56 +42,10 @@ const Dashboard = () => {
 						alert("change Image");
 					}}
 				/>
-				<div className="bg-light" style={{ border: "none" }}>
-					<small>Full Name</small>
-					<button
-						className="btn btn-danger float-right"
-						onClick={() => {
-							alert("change Full Name");
-						}}
-					>
-						Edit
-					</button>
-					<p>{name}</p>
-				</div>
-				<div className="bg-light" style={{ border: "none" }}>
-					<small>Email</small>
-					<button
-						className="btn btn-danger float-right"
-						onClick={() => {
-							alert("change Email ");
-						}}
-					>
-						Edit
-					</button>
-					<p>{email}</p>
-				</div>
-				<div className="bg-light" style={{ border: "none" }}>
-					<small> Address</small>
-					<button
-						className="btn btn-danger float-right"
-						onClick={() => {
-							alert("change Address");
-						}}
-					>
-						Edit
-					</button>
-					<p>
-						{address.city},{address.country}
-					</p>
-				</div>
-				<div className="bg-light" style={{ border: "none" }}>
-					<small>Gender</small>
-					<button
-						className="btn btn-danger float-right"
-						onClick={() => {
-							alert("change Gender");
-						}}
-					>
-						Edit
-					</button>
-					<p>{gender}</p>
-				</div>
+				<ProfileItem title="Full Name" data={name} />
+				<ProfileItem title="Email" data={email} />
+				<ProfileItem title="Address" data={address} />
+				<ProfileItem title="Gender" data={gender} />
 				<div className="bg-light" style={{ border: "none" }}>
 					<button
 						className="btn btn-primary float-right m-1"
