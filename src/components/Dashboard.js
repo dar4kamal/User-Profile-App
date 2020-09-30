@@ -4,12 +4,14 @@ import Spinner from "./Spinner";
 import axios from "axios";
 import ProfileItem from "./ProfileItem";
 import EditPassword from "./editForms/EditPassword";
+import EditImage from "./editForms/EditImage";
 import RemoveAccount from "./editForms/RemoveAccount";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
 const Dashboard = () => {
 	const [modalShow, setModalShow] = useState(false);
+	const [modalShowImage, setModalShowImage] = useState(false);
 	const [modalShowAccount, setModalShowAccount] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const [userData, setUserData] = useState({});
@@ -44,7 +46,7 @@ const Dashboard = () => {
 					src={imageUrl}
 					alt=""
 					onClick={() => {
-						alert("change Image");
+						setModalShowImage(true);
 					}}
 				/>
 				<ProfileItem
@@ -95,6 +97,12 @@ const Dashboard = () => {
 						Remove Account
 					</button>
 				</div>
+				<EditImage
+					userdata={userData}
+					setuserdata={setUserData}
+					show={modalShowImage}
+					onHide={() => setModalShowImage(false)}
+				/>
 				<EditPassword show={modalShow} onHide={() => setModalShow(false)} />
 				<RemoveAccount
 					show={modalShowAccount}
