@@ -1,5 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
+import Alert from "./Alert";
+
+const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
 const Register = () => {
 	const [formData, setFormData] = useState({
@@ -16,12 +20,26 @@ const Register = () => {
 
 	const onChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
-		console.log(e.target.name, e.target.value);
 	};
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(formData);
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		};
+		try {
+			const { data } = await axios.post(
+				`${ApiBaseUri}/api/users/register`,
+				formData,
+				config
+			);
+			localStorage.setItem("token", data.token);
+			setLoaded(true);
+		} catch (err) {
+			setErrors(err.response.data.errors);
+		}
 	};
 	if (loaded) return <Redirect to="/dashboard" />;
 
@@ -90,6 +108,13 @@ const Register = () => {
 				</div>
 				<input type="submit" className="btn btn-primary" value="Register" />
 			</form>
+			{errors ? (
+				errors.map((e) => {
+					return <Alert key={e.msg} msg={e.msg} />;
+				})
+			) : (
+				<div></div>
+			)}
 		</Fragment>
 	);
 };
