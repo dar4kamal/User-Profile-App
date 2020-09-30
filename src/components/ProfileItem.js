@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Button } from "react-bootstrap";
+import EditAddress from "./editForms/EditAddress";
 import EditEmail from "./editForms/EditEmail";
 import EditGender from "./editForms/EditGender";
 import EditName from "./editForms/EditName";
@@ -30,6 +31,15 @@ const ProfileItem = ({ title, type, data, setuserdata, userdata }) => {
 			case "gender":
 				return (
 					<EditGender
+						setuserdata={setuserdata}
+						userdata={userdata}
+						show={modalShow}
+						onHide={() => setModalShow(false)}
+					/>
+				);
+			case "address":
+				return (
+					<EditAddress
 						setuserdata={setuserdata}
 						userdata={userdata}
 						show={modalShow}
