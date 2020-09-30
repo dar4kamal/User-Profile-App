@@ -52,10 +52,14 @@ const ProfileItem = ({ title, type, data, setuserdata, userdata }) => {
 				>
 					Edit
 				</Button>
-				{data.country ? (
-					<p>
-						{data.city},{data.country}
-					</p>
+				{data.hasOwnProperty("country") ? (
+					data.city === "" ? (
+						<p>Please add address</p>
+					) : (
+						<p>
+							{data.city},{data.country}
+						</p>
+					)
 				) : (
 					<p>{data}</p>
 				)}

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Landing = () => {
 	const token = localStorage.getItem("token");
 	if (token) localStorage.removeItem("token");
+	const email = localStorage.getItem("email");
+	if (email) localStorage.removeItem("email");
 
 	return (
 		<Fragment>

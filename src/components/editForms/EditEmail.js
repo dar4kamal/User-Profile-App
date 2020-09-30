@@ -32,6 +32,7 @@ const EditEmail = (props) => {
 
 			if (data.msg) {
 				localStorage.setItem("token", data.token);
+				localStorage.setItem("email", newEmail);
 				setuserdata({ ...userdata, email: newEmail });
 			}
 		} catch (err) {
