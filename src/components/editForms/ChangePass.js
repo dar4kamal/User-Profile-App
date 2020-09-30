@@ -5,7 +5,7 @@ import Alert from "../Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
-const ChangePassword = () => {
+const ChangePass = () => {
 	const [formData, setFormData] = useState({
 		newPassword: "",
 		passwordConfirm: "",
@@ -89,4 +89,4 @@ const ChangePassword = () => {
 	);
 };
 
-export default ChangePassword;
+export default ChangePass;
