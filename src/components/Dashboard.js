@@ -36,16 +36,40 @@ const Dashboard = () => {
 			<div>
 				<img
 					className="round-img my-1"
-					src="https://res.cloudinary.com/dar4kamal/image/upload/v1601398993/Paul-18-512_vvclwb.png"
+					src={imageUrl}
 					alt=""
 					onClick={() => {
 						alert("change Image");
 					}}
 				/>
-				<ProfileItem title="Full Name" data={name} />
-				<ProfileItem title="Email" data={email} />
-				<ProfileItem title="Address" data={address} />
-				<ProfileItem title="Gender" data={gender} />
+				<ProfileItem
+					title="Full Name"
+					data={name}
+					type="name"
+					userdata={userData}
+					setuserdata={setUserData}
+				/>
+				<ProfileItem
+					title="Email"
+					data={email}
+					type="email"
+					userdata={userData}
+					setuserdata={setUserData}
+				/>
+				<ProfileItem
+					title="Address"
+					data={address}
+					type="address"
+					userdata={userData}
+					setuserdata={setUserData}
+				/>
+				<ProfileItem
+					title="Gender"
+					data={gender}
+					type="gender"
+					userdata={userData}
+					setuserdata={setUserData}
+				/>
 				<div className="bg-light" style={{ border: "none" }}>
 					<button
 						className="btn btn-primary float-right m-1"
