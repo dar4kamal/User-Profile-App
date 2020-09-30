@@ -9,7 +9,7 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
-import ChangePassword from "./components/editForms/changePassword";
+import ChangePassword from "./components/editForms/ChangePassword";
 
 const App = () => {
 	return (
