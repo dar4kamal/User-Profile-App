@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ForgetPassword from "./components/ForgetPassword";
 import ResetPassword from "./components/ResetPassword";
+import ChangePassword from "./components/editForms/changePassword";
 
 const App = () => {
 	return (
@@ -22,6 +23,7 @@ const App = () => {
 						<Route exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/forget" component={ForgetPassword} />
 						<Route exact path="/reset" component={ResetPassword} />
+						<Route exact path="/edit-password" component={ChangePassword} />
 					</Switch>
 				</Container>
 			</Fragment>
