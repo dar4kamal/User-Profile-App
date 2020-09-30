@@ -3,6 +3,9 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
+	const token = localStorage.getItem("token");
+	if (token) localStorage.removeItem("token");
+
 	return (
 		<Fragment>
 			<div>
