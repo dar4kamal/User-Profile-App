@@ -7,7 +7,7 @@ const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 const EditGender = (props) => {
 	const { userdata, setuserdata } = props;
 	const [formData, setFormData] = useState({
-		newGender: "",
+		newGender: "male",
 	});
 
 	const { newGender } = formData;
