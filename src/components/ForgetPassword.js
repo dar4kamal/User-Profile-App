@@ -5,15 +5,13 @@ import Alert from "./Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
-const Login = () => {
+const ForgetPassword = () => {
 	const [formData, setFormData] = useState({
 		email: "",
-		password: "",
 	});
-	const [loaded, setLoaded] = useState(false);
 	const [errors, setErrors] = useState([]);
-
-	const { email, password } = formData;
+	const [emailSent, setEmailSent] = useState(false);
+	const { email } = formData;
 
 	const onChange = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,28 +23,29 @@ const Login = () => {
 				"Content-Type": "application/json",
 			},
 		};
-		const body = JSON.stringify({ email, password });
 		try {
 			const { data } = await axios.post(
-				`${ApiBaseUri}/api/users/login`,
-				body,
+				`${ApiBaseUri}/api/auth/forgetPass`,
+				formData,
 				config
 			);
-			localStorage.setItem("token", data.token);
-			setLoaded(true);
+			if (data.email) {
+				setEmailSent(true);
+				localStorage.setItem("email", data.email);
+			}
 		} catch (err) {
 			setErrors(err.response.data.errors);
 		}
 	};
 
-	if (loaded) return <Redirect to="/dashboard" />;
+	if (emailSent) return <Redirect to="/reset" />;
 	return (
 		<Fragment>
-			<Link to="/">
+			<Link to="/login">
 				<i className="fas fa-arrow-left"></i>
 			</Link>
 
-			<h4 className="large text-primary">log in to your account</h4>
+			<h4 className="large text-primary">Reset your password</h4>
 			<form className="form" onSubmit={(e) => onSubmit(e)}>
 				<div className="form-group">
 					<input
@@ -58,20 +57,11 @@ const Login = () => {
 						required
 					/>
 				</div>
-				<div className="form-group">
-					<input
-						type="password"
-						placeholder="Please enter your password"
-						name="password"
-						value={password}
-						onChange={(e) => onChange(e)}
-					/>
-				</div>
-				<Link to="/forget" className="float-right">
-					Forget Password?
-				</Link>
-				<br />
-				<input type="submit" className="btn btn-primary" value="Login" />
+				<input
+					type="submit"
+					className="btn btn-primary"
+					value="Reset Password"
+				/>
 			</form>
 			{errors ? (
 				errors.map((e) => {
@@ -84,4 +74,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default ForgetPassword;

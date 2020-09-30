@@ -7,6 +7,7 @@ import Landing from "./components/Landing";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
+import ForgetPassword from "./components/ForgetPassword";
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/dashboard" component={Dashboard} />
+						<Route exact path="/forget" component={ForgetPassword} />
 					</Switch>
 				</Container>
 			</Fragment>
