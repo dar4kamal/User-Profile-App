@@ -4,11 +4,13 @@ import Spinner from "./Spinner";
 import axios from "axios";
 import ProfileItem from "./ProfileItem";
 import EditPassword from "./editForms/EditPassword";
+import RemoveAccount from "./editForms/RemoveAccount";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
 const Dashboard = () => {
 	const [modalShow, setModalShow] = useState(false);
+	const [modalShowAccount, setModalShowAccount] = useState(false);
 	const [loaded, setLoaded] = useState(false);
 	const [userData, setUserData] = useState({});
 
@@ -20,6 +22,7 @@ const Dashboard = () => {
 	const fetchData = async () => {
 		const { data } = await axios.get(`${ApiBaseUri}/api/users`);
 		setUserData(data.userData);
+		localStorage.setItem("email", data.userData.email);
 		setLoaded(true);
 	};
 
@@ -86,13 +89,17 @@ const Dashboard = () => {
 						className="btn btn-danger float-right m-1"
 						style={{ width: "100%" }}
 						onClick={() => {
-							alert("remove account");
+							setModalShowAccount(true);
 						}}
 					>
 						Remove Account
 					</button>
 				</div>
 				<EditPassword show={modalShow} onHide={() => setModalShow(false)} />
+				<RemoveAccount
+					show={modalShowAccount}
+					onHide={() => setModalShowAccount(false)}
+				/>
 			</div>
 		</Fragment>
 	);
