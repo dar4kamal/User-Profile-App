@@ -1,22 +1,45 @@
+import axios from "axios";
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import Alert from "./Alert";
+
+const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
 const Login = () => {
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	});
+	const [loaded, setLoaded] = useState(false);
+	const [errors, setErrors] = useState([]);
 
 	const { email, password } = formData;
 
 	const onChange = (e) =>
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-		console.log(email, password);
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		};
+		const body = JSON.stringify({ email, password });
+		try {
+			const { data } = await axios.post(
+				`${ApiBaseUri}/api/users/login`,
+				body,
+				config
+			);
+			localStorage.setItem("token", data.token);
+			setLoaded(true);
+		} catch (err) {
+			setErrors(err.response.data.errors);
+		}
 	};
 
+	if (loaded) return <Redirect to="/dashboard" />;
 	return (
 		<Fragment>
 			<Link to="/">
@@ -46,6 +69,13 @@ const Login = () => {
 				</div>
 				<input type="submit" className="btn btn-primary" value="Login" />
 			</form>
+			{errors ? (
+				errors.map((e) => {
+					return <Alert key={e.msg} msg={e.msg} />;
+				})
+			) : (
+				<div></div>
+			)}
 		</Fragment>
 	);
 };
