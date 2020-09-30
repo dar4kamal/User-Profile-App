@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ForgetPassword from "./components/ForgetPassword";
+import ResetPassword from "./components/ResetPassword";
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/dashboard" component={Dashboard} />
 						<Route exact path="/forget" component={ForgetPassword} />
+						<Route exact path="/reset" component={ResetPassword} />
 					</Switch>
 				</Container>
 			</Fragment>
