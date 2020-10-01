@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import Alert from "./Alert";
 
@@ -40,29 +40,85 @@ const ForgetPassword = () => {
 
 	if (emailSent) return <Redirect to="/reset" />;
 	return (
-		<Fragment>
-			<Link to="/login">
-				<i className="fas fa-arrow-left"></i>
-			</Link>
-
-			<h4 className="large text-primary">Reset your password</h4>
-			<form className="form" onSubmit={(e) => onSubmit(e)}>
-				<div className="form-group">
-					<input
-						type="email"
-						placeholder="Please enter your email"
-						name="email"
-						value={email}
-						onChange={(e) => onChange(e)}
-						required
-					/>
+		<div
+			style={{
+				backgroundColor: "#53D7BC",
+				borderTopRightRadius: "25px",
+				borderTopLeftRadius: "25px",
+			}}
+		>
+			<div className="w-100">
+				<div className="pt-5 pb-2 pl-4 mb-2">
+					<Link to="/login">
+						<i
+							className="fas fa-m fa-arrow-left"
+							style={{ color: "white" }}
+						></i>
+					</Link>
 				</div>
-				<input
-					type="submit"
-					className="btn btn-primary"
-					value="Reset Password"
-				/>
-			</form>
+
+				<h4
+					className="large pl-4 pb-4"
+					style={{
+						color: "white",
+						fontSize: 26,
+					}}
+				>
+					Reset your password
+				</h4>
+			</div>
+			<div
+				className="bg-light"
+				style={{ borderTopRightRadius: "25px", borderTopLeftRadius: "25px" }}
+			>
+				<div>
+					<img
+						variant="top"
+						src="https://www.edgybrain.com/wp-content/uploads/mobile-app.png"
+						alt="home"
+						width="100%"
+						heigth="100%"
+						className="m-2 pr-4 pl-4 pt-3"
+					/>
+					<h4
+						className="large pt-1 text-center"
+						style={{
+							fontSize: 21,
+							color: "#0b324d",
+						}}
+					>
+						Reset Password
+					</h4>
+					<h4
+						className="large pt-1 text-center"
+						style={{
+							fontSize: 12,
+						}}
+					>
+						Enter your email address
+					</h4>
+				</div>
+				<form className="form" onSubmit={(e) => onSubmit(e)}>
+					<div className="form-group  pt-3 pl-4 pr-4">
+						<label>Email</label>
+						<input
+							type="email"
+							className="form-control"
+							placeholder="Please enter your email"
+							name="email"
+							value={email}
+							onChange={(e) => onChange(e)}
+							required
+						/>
+					</div>
+					<input
+						type="submit"
+						className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
+						value="Reset Password"
+					/>
+				</form>
+			</div>
 			{errors ? (
 				errors.map((e) => {
 					return <Alert key={e.msg} msg={e.msg} />;
@@ -70,7 +126,7 @@ const ForgetPassword = () => {
 			) : (
 				<div></div>
 			)}
-		</Fragment>
+		</div>
 	);
 };
 
