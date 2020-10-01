@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import axios from "axios";
@@ -35,20 +35,41 @@ const Dashboard = () => {
 	return !loaded ? (
 		<Spinner />
 	) : (
-		<Fragment>
-			<Link to="/" className="float-right">
-				<i className="fa fa-power-off"></i>
-			</Link>
-			<div className="text-center">MY PROFILE</div>
-			<div>
+		<div className="bg-light">
+			<div className="p-5">
+				<Link to="/" className="float-right" style={{ color: "black" }}>
+					<i className="fa fa-m fa-power-off"></i>
+				</Link>
+				<div className="text-center text-dark">
+					<strong>MY PROFILE</strong>
+				</div>
+			</div>
+
+			<div className="text-center">
 				<img
-					className="round-img my-1"
+					style={{
+						borderRadius: "50% 50%",
+						width: "40%",
+						heigth: "40%",
+						border: "1px solid black",
+					}}
 					src={imageUrl}
+					className="mr-3 ml-3 mb-3"
 					alt=""
 					onClick={() => {
 						setModalShowImage(true);
 					}}
 				/>
+				<h1
+					className="large"
+					style={{
+						color: "black",
+						fontSize: 26,
+					}}
+				>
+					<strong>{name}</strong>
+				</h1>
+
 				<ProfileItem
 					title="Full Name"
 					data={name}
@@ -77,26 +98,25 @@ const Dashboard = () => {
 					userdata={userData}
 					setuserdata={setUserData}
 				/>
-				<div className="bg-light" style={{ border: "none" }}>
-					<button
-						className="btn btn-primary float-right m-1"
-						style={{ width: "100%" }}
-						onClick={() => {
-							setModalShow(true);
-						}}
-					>
-						Change Password
-					</button>
-					<button
-						className="btn btn-danger float-right m-1"
-						style={{ width: "100%" }}
-						onClick={() => {
-							setModalShowAccount(true);
-						}}
-					>
-						Remove Account
-					</button>
-				</div>
+
+				<button
+					className="btn btn-primary mt-1 mr-2 ml-3 float-none"
+					style={{ width: "90%" }}
+					onClick={() => {
+						setModalShow(true);
+					}}
+				>
+					Change Password
+				</button>
+				<button
+					className="btn btn-danger mt-1 mr-2 ml-3 mb-3 float-none"
+					style={{ width: "90%" }}
+					onClick={() => {
+						setModalShowAccount(true);
+					}}
+				>
+					Remove Account
+				</button>
 				<EditImage
 					userdata={userData}
 					setuserdata={setUserData}
@@ -109,7 +129,7 @@ const Dashboard = () => {
 					onHide={() => setModalShowAccount(false)}
 				/>
 			</div>
-		</Fragment>
+		</div>
 	);
 };
 

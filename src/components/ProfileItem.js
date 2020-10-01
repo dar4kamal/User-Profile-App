@@ -1,5 +1,4 @@
-import React, { useState, Fragment } from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
 import EditAddress from "./editForms/EditAddress";
 import EditEmail from "./editForms/EditEmail";
 import EditGender from "./editForms/EditGender";
@@ -52,34 +51,48 @@ const ProfileItem = ({ title, type, data, setuserdata, userdata }) => {
 	};
 
 	return (
-		<Fragment>
-			<div className="bg-light" style={{ border: "none" }}>
-				<small>{title}</small>
-				<Button
-					variant="danger"
-					className="float-right"
+		<div className="">
+			<div>
+				<small className="float-left pl-3">{title}</small>
+				<h5
+					className="float-right p-1 pr-3"
+					style={{ color: "#1e3dc7" }}
 					onClick={() => setModalShow(true)}
 				>
-					Edit
-				</Button>
+					<small>Edit</small>
+				</h5>
+			</div>
+			<div className="">
 				{data.hasOwnProperty("country") ? (
 					data.city === "" ? (
-						<p>Please add address</p>
+						<p
+							className="text-left"
+							style={{ paddingTop: "20px", paddingLeft: "15px" }}
+						>
+							<strong>Please add address</strong>
+						</p>
 					) : (
-						<p>
-							{data.city},{data.country}
+						<p
+							className="text-left"
+							style={{ paddingTop: "20px", paddingLeft: "15px" }}
+						>
+							<strong>
+								{data.city},{data.country}
+							</strong>
 						</p>
 					)
 				) : (
-					<p>{data}</p>
+					<p
+						className="text-left"
+						style={{ paddingTop: "20px", paddingLeft: "15px" }}
+					>
+						<strong>{data}</strong>
+					</p>
 				)}
-				<RenderSwitch
-					type={type}
-					setuserdata={setuserdata}
-					userdata={userdata}
-				/>
 			</div>
-		</Fragment>
+
+			<RenderSwitch type={type} setuserdata={setuserdata} userdata={userdata} />
+		</div>
 	);
 };
 
