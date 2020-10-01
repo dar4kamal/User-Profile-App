@@ -44,6 +44,8 @@ const Login = () => {
 		<div
 			style={{
 				backgroundColor: "#53D7BC",
+				borderTopRightRadius: "25px",
+				borderTopLeftRadius: "25px",
 			}}
 		>
 			<div className="w-100">
