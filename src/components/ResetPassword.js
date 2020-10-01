@@ -22,11 +22,9 @@ const ResetPassword = () => {
 		},
 	};
 
-	const email = localStorage.getItem("email");
-	if (email) axios.defaults.headers.common["x-user-data"] = email;
-
 	const resendCode = async () => {
 		try {
+			const email = localStorage.getItem("email");
 			await axios.post(`${ApiBaseUri}/api/auth/forgetPass`, { email }, config);
 		} catch (err) {
 			setErrors(err.response.data.errors);
@@ -35,6 +33,8 @@ const ResetPassword = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+		const email = localStorage.getItem("email");
+		if (email) axios.defaults.headers.common["x-user-data"] = email;
 		const config = {
 			headers: {
 				"Content-Type": "application/json",

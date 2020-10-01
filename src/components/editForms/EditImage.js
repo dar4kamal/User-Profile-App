@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import Alert from "../Alert";
 
 const backendApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 const cloudinaryApiBaseUrl =
@@ -10,6 +11,7 @@ const cloudinaryApiPreset = "default_preset";
 const EditName = (props) => {
 	const { userdata, setuserdata } = props;
 	const [image, setImage] = useState("");
+	const [errors, setErrors] = useState([]);
 	const onChange = (e) => {
 		setImage(e.target.files[0]);
 	};
@@ -44,7 +46,9 @@ const EditName = (props) => {
 			setuserdata({ ...userdata, imageUrl: data });
 			props.onHide();
 		} catch (err) {
-			console.error(err);
+			if (err.response.status === 400)
+				setErrors([{ msg: "Invalid image Type" }]);
+			else setErrors(err.response.data.errors);
 		}
 	};
 
@@ -77,6 +81,13 @@ const EditName = (props) => {
 				>
 					Upload Image
 				</button>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</Modal.Body>
 		</Modal>
 	);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import Alert from "../Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
@@ -9,6 +10,7 @@ const EditGender = (props) => {
 	const [formData, setFormData] = useState({
 		newGender: "male",
 	});
+	const [errors, setErrors] = useState([]);
 
 	const { newGender } = formData;
 	const onChange = (e) => {
@@ -35,7 +37,7 @@ const EditGender = (props) => {
 				props.onHide();
 			}
 		} catch (err) {
-			console.log(err.response.data.errors);
+			setErrors(err.response.data.errors);
 		}
 	};
 
@@ -73,6 +75,13 @@ const EditGender = (props) => {
 						value="Edit"
 					/>
 				</form>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</Modal.Body>
 		</Modal>
 	);

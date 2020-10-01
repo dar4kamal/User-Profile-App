@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import Alert from "../Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
@@ -10,7 +11,7 @@ const EditPassword = (props) => {
 		newPassword: "",
 		passwordConfirm: "",
 	});
-
+	const [errors, setErrors] = useState([]);
 	const { oldPassword, newPassword, passwordConfirm } = formData;
 	const onChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,12 +33,11 @@ const EditPassword = (props) => {
 				formData,
 				config
 			);
-			console.log(data.msg);
 			if (data.msg) {
 				props.onHide();
 			}
 		} catch (err) {
-			console.log("error", err.response.data.errors);
+			setErrors(err.response.data.errors);
 		}
 	};
 
@@ -98,6 +98,13 @@ const EditPassword = (props) => {
 						value="Edit"
 					/>
 				</form>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</Modal.Body>
 		</Modal>
 	);

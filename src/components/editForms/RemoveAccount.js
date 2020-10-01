@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import Alert from "../Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
@@ -10,6 +11,7 @@ const RemoveAccount = (props) => {
 		password: "",
 	});
 	const [removed, setRemoved] = useState(false);
+	const [errors, setErrors] = useState([]);
 
 	const { password } = formData;
 	const onChange = (e) => {
@@ -39,7 +41,7 @@ const RemoveAccount = (props) => {
 				props.onHide();
 			}
 		} catch (err) {
-			console.log("error", err.response.data.errors);
+			setErrors(err.response.data.errors);
 		}
 	};
 
@@ -77,6 +79,13 @@ const RemoveAccount = (props) => {
 						value="Remove Account"
 					/>
 				</form>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</Modal.Body>
 		</Modal>
 	);

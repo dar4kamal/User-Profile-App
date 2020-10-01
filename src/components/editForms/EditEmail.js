@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+import Alert from "../Alert";
 
 const ApiBaseUri = "https://fathomless-mountain-35942.herokuapp.com";
 
@@ -9,6 +10,7 @@ const EditEmail = (props) => {
 	const [formData, setFormData] = useState({
 		newEmail: "",
 	});
+	const [errors, setErrors] = useState([]);
 
 	const { newEmail } = formData;
 	const onChange = (e) => {
@@ -36,7 +38,7 @@ const EditEmail = (props) => {
 				setuserdata({ ...userdata, email: newEmail });
 			}
 		} catch (err) {
-			console.log(err.response.data.errors);
+			setErrors(err.response.data.errors);
 		}
 	};
 
@@ -71,6 +73,13 @@ const EditEmail = (props) => {
 						value="Edit"
 					/>
 				</form>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</Modal.Body>
 		</Modal>
 	);
