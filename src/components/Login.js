@@ -107,14 +107,14 @@ const Login = () => {
 						value="Login"
 					/>
 				</form>
+				{errors ? (
+					errors.map((e) => {
+						return <Alert key={e.msg} msg={e.msg} />;
+					})
+				) : (
+					<div></div>
+				)}
 			</div>
-			{errors ? (
-				errors.map((e) => {
-					return <Alert key={e.msg} msg={e.msg} />;
-				})
-			) : (
-				<div></div>
-			)}
 		</div>
 	);
 };
