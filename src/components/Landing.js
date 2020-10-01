@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import { Card } from "react-bootstrap";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
@@ -9,48 +8,55 @@ const Landing = () => {
 	if (email) localStorage.removeItem("email");
 
 	return (
-		<Fragment>
+		<div className="w-100" style={{ backgroundColor: "#53D7BC" }}>
 			<div>
 				<img
 					variant="top"
-					src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?size=338&ext=jpg"
+					src="https://www.edgybrain.com/wp-content/uploads/mobile-app.png"
 					alt="home"
 					width="90%"
 					heigth="90%"
 					className="rounded mx-auto d-block mb-4"
 				/>
 			</div>
-			<div className="bg-light">
-				<Card
+			<div
+				className="bg-light pt-2"
+				style={{ borderTopRightRadius: "25px", borderTopLeftRadius: "25px" }}
+			>
+				<div
 					className="text-center mt-4"
 					style={{ width: "100%", border: "none" }}
 				>
-					<Card.Body>
-						<Card.Title>Welcome to our app!</Card.Title>
-						<Card.Text>
-							This is the first version of user profile app.
-						</Card.Text>
-						<Card.Text>Please sign in or create an account below</Card.Text>
-						<Link
-							to="/login"
-							style={{ width: "100%" }}
-							variant="primary"
-							className="btn btn-primary m-2"
-						>
-							Log in
-						</Link>
-						<Link
-							to="/register"
-							style={{ width: "100%" }}
-							variant="primary"
-							className="m-2 btn btn-primary"
-						>
-							Create New Account
-						</Link>
-					</Card.Body>
-				</Card>
+					<div>
+						<h4 className="">
+							<strong>Welcome to our app!</strong>
+						</h4>
+						<div style={{ lineHeight: 0.3 }} className="p-2">
+							<p>This is the first version of user profile app.</p>
+							<p>Please sign in or create an account below</p>
+						</div>
+						<div className="p-1 w-60">
+							<Link
+								to="/login"
+								style={{ width: "90%" }}
+								variant="primary"
+								className="btn btn-primary m-2"
+							>
+								Log in
+							</Link>
+							<Link
+								to="/register"
+								style={{ width: "90%" }}
+								variant="primary"
+								className="m-2 btn btn-primary"
+							>
+								Create New Account
+							</Link>
+						</div>
+					</div>
+				</div>
 			</div>
-		</Fragment>
+		</div>
 	);
 };
 
