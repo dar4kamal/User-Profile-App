@@ -56,6 +56,7 @@ const EditGender = (props) => {
 					<div className="form-group">
 						<label> Gender </label>
 						<select
+							className="form-control"
 							value={newGender}
 							onChange={(e) => onChange(e)}
 							required
@@ -65,7 +66,12 @@ const EditGender = (props) => {
 							<option value="female">Female</option>
 						</select>
 					</div>
-					<input type="submit" className="btn btn-primary" value="Edit" />
+					<input
+						type="submit"
+						className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
+						value="Edit"
+					/>
 				</form>
 			</Modal.Body>
 		</Modal>

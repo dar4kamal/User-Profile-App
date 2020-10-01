@@ -57,14 +57,24 @@ const EditName = (props) => {
 		>
 			<Modal.Header closeButton>
 				<Modal.Title id="contained-modal-title-vcenter">
-					Edit Full Name
+					Edit Profile Image
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<div className="form-group">
-					<input type="file" name="image" onChange={onChange} />
+					<input
+						type="file"
+						name="image"
+						className="form-control"
+						onChange={onChange}
+						style={{ border: "none" }}
+					/>
 				</div>
-				<button onClick={onSubmit} className="btn center">
+				<button
+					onClick={onSubmit}
+					className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+					style={{ width: "90%" }}
+				>
 					Upload Image
 				</button>
 			</Modal.Body>

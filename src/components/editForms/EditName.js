@@ -54,7 +54,9 @@ const EditName = (props) => {
 			<Modal.Body>
 				<form className="form" onSubmit={(e) => onSubmit(e)}>
 					<div className="form-group">
+						<label>Full Name</label>
 						<input
+							className="form-control"
 							type="text"
 							placeholder="Enter your new name"
 							name="newName"
@@ -63,7 +65,12 @@ const EditName = (props) => {
 							required
 						/>
 					</div>
-					<input type="submit" className="btn btn-primary" value="Edit" />
+					<input
+						type="submit"
+						className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
+						value="Edit"
+					/>
 				</form>
 			</Modal.Body>
 		</Modal>

@@ -56,8 +56,10 @@ const EditPassword = (props) => {
 			<Modal.Body>
 				<form className="form" onSubmit={(e) => onSubmit(e)}>
 					<div className="form-group">
+						<label>Old Password</label>
 						<input
 							type="password"
+							className="form-control"
 							placeholder="Enter your old password"
 							name="oldPassword"
 							value={oldPassword}
@@ -66,8 +68,10 @@ const EditPassword = (props) => {
 						/>
 					</div>
 					<div className="form-group">
+						<label>New Password</label>
 						<input
 							type="password"
+							className="form-control"
 							placeholder="Enter your new password"
 							name="newPassword"
 							value={newPassword}
@@ -76,7 +80,9 @@ const EditPassword = (props) => {
 						/>
 					</div>
 					<div className="form-group">
+						<label>Re Type Password</label>
 						<input
+							className="form-control"
 							type="password"
 							placeholder="Retype Password"
 							name="passwordConfirm"
@@ -85,7 +91,12 @@ const EditPassword = (props) => {
 							required
 						/>
 					</div>
-					<input type="submit" className="btn btn-primary" value="Edit" />
+					<input
+						type="submit"
+						className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
+						value="Edit"
+					/>
 				</form>
 			</Modal.Body>
 		</Modal>

@@ -58,6 +58,7 @@ const EditAddress = (props) => {
 						<label> Country </label>
 						<input
 							type="text"
+							className="form-control"
 							placeholder="Enter your Country"
 							name="country"
 							value={country}
@@ -69,6 +70,7 @@ const EditAddress = (props) => {
 						<label> City </label>
 						<input
 							type="text"
+							className="form-control"
 							placeholder="Enter your City"
 							name="city"
 							value={city}
@@ -76,7 +78,12 @@ const EditAddress = (props) => {
 							required
 						/>
 					</div>
-					<input type="submit" className="btn btn-primary" value="Edit" />
+					<input
+						type="submit"
+						className="btn btn-primary mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
+						value="Edit"
+					/>
 				</form>
 			</Modal.Body>
 		</Modal>

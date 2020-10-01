@@ -59,7 +59,9 @@ const RemoveAccount = (props) => {
 			<Modal.Body>
 				<form className="form" onSubmit={(e) => onSubmit(e)}>
 					<div className="form-group">
+						<label>Password</label>
 						<input
+							className="form-control"
 							type="password"
 							placeholder="Enter your password"
 							name="password"
@@ -70,7 +72,8 @@ const RemoveAccount = (props) => {
 					</div>
 					<input
 						type="submit"
-						className="btn btn-danger"
+						className="btn btn-danger mt-3 mr-2 ml-3 float-none"
+						style={{ width: "90%" }}
 						value="Remove Account"
 					/>
 				</form>
